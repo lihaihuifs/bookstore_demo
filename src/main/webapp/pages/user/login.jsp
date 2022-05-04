@@ -4,9 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Login Page</title>
-	<base href="http://localhost:8080/bookstore_demo/">
-	<link type="text/css" rel="stylesheet" href="static/css/style.css" >
-	<script type="text/javascript" src="static/script/jquery-1.7.2.js"></script>
+	<%@include file="/pages/common/head_settings.jsp"%>
 	<script type="text/javascript">
 		$(function () {
 			// Onload
@@ -75,10 +73,6 @@
 					</div>
 				</div>
 			</div>
-		<div id="bottom">
-			<span>
-				尚硅谷书城.Copyright &copy;2015
-			</span>
-		</div>
+		<%@include file="/pages/common/footer.jsp" %>
 </body>
 </html>
