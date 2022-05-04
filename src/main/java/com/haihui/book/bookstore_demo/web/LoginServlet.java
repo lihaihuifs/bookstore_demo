@@ -33,10 +33,10 @@ public class LoginServlet extends HttpServlet {
 
         if (login == null){
             System.out.println("Log in Failed");
-            req.getRequestDispatcher("/pages/user/login.html").forward(req,resp);
+            req.getRequestDispatcher("/pages/user/login.jsp").forward(req,resp);
         } else {
             System.out.println("Log in Succeeded");
-            req.getRequestDispatcher("/pages/user/login_success.html").forward(req,resp);
+            req.getRequestDispatcher("/pages/user/login_success.jsp").forward(req,resp);
         }
     }
 }
