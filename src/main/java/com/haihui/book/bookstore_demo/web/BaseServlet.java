@@ -18,9 +18,14 @@ import java.lang.reflect.Method;
  * @version      : [v1.0]
  */
 public class BaseServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doPost(req, resp);
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8"); // Solve Chinese Input
         String action = req.getParameter("action");// Action attribute of the hidden input
         try {
             Method method = this.getClass().getDeclaredMethod(action, HttpServletRequest.class, HttpServletResponse.class);

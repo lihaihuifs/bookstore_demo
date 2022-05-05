@@ -26,4 +26,19 @@ public class WebUtils {
         }
         return bean;
     }
+
+    /**
+     *
+     * @param stringInt
+     * @param defaultValue the default value to return
+     * @return
+     */
+    public static Integer parseInt(String stringInt, int defaultValue){
+        try {
+            return Integer.parseInt(stringInt);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return defaultValue;
+    }
 }
