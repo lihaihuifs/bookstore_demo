@@ -33,6 +33,8 @@ public class LoginServlet extends HttpServlet {
 
         if (login == null){
             System.out.println("Log in Failed");
+            req.setAttribute("msg","Username or password is wrong.");
+            req.setAttribute("username",username);
             req.getRequestDispatcher("/pages/user/login.jsp").forward(req,resp);
         } else {
             System.out.println("Log in Succeeded");

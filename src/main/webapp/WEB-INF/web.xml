@@ -30,5 +30,14 @@
         <url-pattern>/loginServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>com.haihui.book.bookstore_demo.web.UserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/userServlet</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>
