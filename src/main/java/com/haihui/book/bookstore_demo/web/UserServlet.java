@@ -23,7 +23,7 @@ public class UserServlet extends BaseServlet {
 
     private UserService userService = new UserServiceImpl();
 
-    private void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    public void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         User user = new User(null, username, password, null);
@@ -40,7 +40,7 @@ public class UserServlet extends BaseServlet {
         }
     }
 
-    private void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    public void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         String email = req.getParameter("email");
