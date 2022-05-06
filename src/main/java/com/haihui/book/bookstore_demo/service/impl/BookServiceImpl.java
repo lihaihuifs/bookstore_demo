@@ -9,13 +9,14 @@ package com.haihui.book.bookstore_demo.service.impl;
 import com.haihui.book.bookstore_demo.dao.BookDAO;
 import com.haihui.book.bookstore_demo.dao.impl.BookDAOImpl;
 import com.haihui.book.bookstore_demo.entity.Book;
+import com.haihui.book.bookstore_demo.entity.Page;
 import com.haihui.book.bookstore_demo.service.BookService;
 
 import java.util.List;
 
 /**
- * @description  :
- * @version      : [v1.0]
+ * @version : [v1.0]
+ * @description :
  */
 public class BookServiceImpl implements BookService {
 
@@ -44,5 +45,26 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Book> queryBooks() {
         return bookDAO.queryBooks();
+    }
+
+    @Override
+    public Page<Book> page(int pageNo, int pageSize) {
+        Page<Book> page = new Page<>();
+        page.setPageSize(pageSize);
+
+        // Must Calculate pageTotal first, because of boundary check
+        Integer pageTotalCount = bookDAO.queryForPageTotalCount();
+        page.setPageTotalCount(pageTotalCount);
+        Integer pageTotal = pageTotalCount / pageSize;
+        if (pageTotalCount % pageSize > 0) {
+            pageTotal += 1;
+        }
+
+        page.setPageTotal(pageTotal);
+        page.setPageNo(pageNo);
+        int begin = (page.getPageNo() - 1) * pageSize;
+        List<Book> items = bookDAO.queryForPageItems(begin, pageSize);
+        page.setItems(items);
+        return page;
     }
 }

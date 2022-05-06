@@ -7,6 +7,7 @@ package com.haihui.book.bookstore_demo.service;
  **/
 
 import com.haihui.book.bookstore_demo.entity.Book;
+import com.haihui.book.bookstore_demo.entity.Page;
 
 import java.util.List;
 
@@ -24,4 +25,6 @@ public interface BookService {
     Book queryBookById(Integer id);
 
     List<Book> queryBooks();
+
+    Page<Book> page(int pageNo, int pageSize);
 }

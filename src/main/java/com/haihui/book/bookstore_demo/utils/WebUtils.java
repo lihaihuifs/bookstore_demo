@@ -33,7 +33,7 @@ public class WebUtils {
      * @param defaultValue the default value to return
      * @return
      */
-    public static Integer parseInt(String stringInt, int defaultValue){
+    public static int parseInt(String stringInt, int defaultValue){
         try {
             return Integer.parseInt(stringInt);
         } catch (NumberFormatException e) {
