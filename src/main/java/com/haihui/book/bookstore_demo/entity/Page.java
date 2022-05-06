@@ -32,6 +32,26 @@ public class Page<T> {
     // Book Items
     private List<T> items;
 
+    // URL: page or pageWithFilter
+    private String url;
+
+    public Page(Integer pageNo, Integer pageTotal, Integer pageSize, Integer pageTotalCount, List<T> items, String url) {
+        this.pageNo = pageNo;
+        this.pageTotal = pageTotal;
+        this.pageSize = pageSize;
+        this.pageTotalCount = pageTotalCount;
+        this.items = items;
+        this.url = url;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     public Integer getPageNo() {
         return pageNo;
     }
