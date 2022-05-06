@@ -91,7 +91,7 @@ public class BookServiceImpl implements BookService {
         page.setItems(items);
 
         // Set page url
-        page.setUrl("client/bookServlet?action=pageByPrice");
+        page.setUrl("client/bookServlet?action=pageByPrice&min="+min+"&max="+max);
         return page;
     }
 }
