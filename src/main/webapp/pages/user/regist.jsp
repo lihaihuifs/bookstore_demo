@@ -80,6 +80,10 @@
 
 				});
 
+				$("code_img").click(function () {
+					this.src = "${basePath}kaptcha.jpg?d=" + new Date(); // Keep URL Different with Date
+				});
+
 			});
 
 		</script>
@@ -136,7 +140,7 @@
 									<br />
 									<label>验证码：</label>
 									<input class="itxt" type="text" style="width: 150px;" name="code" id="code"/>
-									<img alt="" src="static/img/code.bmp" style="float: right; margin-right: 40px">
+									<img id="code_img" alt="code" src="kaptcha.jpg" style="float: right; margin-right: 40px">
 									<br />
 									<br />
 									<input type="submit" value="注册" id="sub_btn" />

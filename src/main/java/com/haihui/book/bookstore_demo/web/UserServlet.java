@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
+
 /**
  * @description  :
  * @version      : [v1.0]
@@ -36,6 +38,7 @@ public class UserServlet extends BaseServlet {
             req.getRequestDispatcher("/pages/user/login.jsp").forward(req,resp);
         } else {
             System.out.println("Log in Succeeded");
+            req.getSession().setAttribute("user",login);
             req.getRequestDispatcher("/pages/user/login_success.jsp").forward(req,resp);
         }
     }
@@ -46,8 +49,12 @@ public class UserServlet extends BaseServlet {
         String email = req.getParameter("email");
         String code = req.getParameter("code");
 
+        // Check kaptcha verification code
+        String token = (String) req.getSession().getAttribute(KAPTCHA_SESSION_KEY);
+        req.getSession().removeAttribute(KAPTCHA_SESSION_KEY); // Delete Token
+
         // If code != abcde, go back to register page
-        if (!code.equalsIgnoreCase("abcde")){
+        if (code == null || !code.equalsIgnoreCase(token)){
             System.out.println("验证码[" + code + "]错误");
             req.getRequestDispatcher("/pages/user/regist.jsp").forward(req, resp); // Might need request info
             return;
@@ -66,5 +73,10 @@ public class UserServlet extends BaseServlet {
         // Save user
         userService.registerUser(new User(null, username, password,email));
         req.getRequestDispatcher("/pages/user/regist_success.jsp").forward(req,resp);
+    }
+
+    public void logOut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        req.getSession().invalidate(); // Destroy session
+        resp.sendRedirect(req.getContextPath()); // Back to index.jsp
     }
 }
