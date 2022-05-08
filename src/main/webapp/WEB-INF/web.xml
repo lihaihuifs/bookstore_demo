@@ -66,5 +66,16 @@
         <url-pattern>/kaptcha.jpg</url-pattern>
     </servlet-mapping>
 
+    <filter>
+        <filter-name>ManagerFilter</filter-name>
+        <filter-class>com.haihui.book.bookstore_demo.filter.ManagerFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ManagerFilter</filter-name>
+        <!-- access to servlet and resources under manager-->
+        <url-pattern>/pages/manager/*</url-pattern>
+        <url-pattern>/manager/bookServlet</url-pattern>
+    </filter-mapping>
+
 
 </web-app>
