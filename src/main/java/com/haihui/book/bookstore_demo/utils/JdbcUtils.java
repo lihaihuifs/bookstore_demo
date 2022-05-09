@@ -39,25 +39,27 @@ public class JdbcUtils {
 
     // Get database connection
     public static Connection getConnection() {
+        /*
         Connection connection = threadLocal.get(); // Attempt to retrieve connection
         if (connection == null) {
             try {
                 connection = dataSource.getConnection();
-                connection.setAutoCommit(false); // Transaction control manually
+                //connection.setAutoCommit(false); // Transaction control manually
                 threadLocal.set(connection); // Save connection
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
         return connection; // Return connection anyway
-//        Connection connection = null;
-//        try {
-//            connection = dataSource.getConnection();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        } finally {
-//            return connection;
-//        }
+        */
+        Connection connection = null;
+        try {
+            connection = dataSource.getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            return connection;
+        }
     }
 
     public static void commitAndClose(){

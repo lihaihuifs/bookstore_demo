@@ -24,7 +24,7 @@ public class Cart {
             cartItem.setCount(cartItem.getCount() + 1); // Add count
             cartItem.setTotalPrice(cartItem.getTotalPrice().add(cartItem.getPrice()));
         } else { // If not exists, add to cart
-            items.put(cartItem.getId(), cartItem);
+            items.put(id, item);
         }
     }
 
