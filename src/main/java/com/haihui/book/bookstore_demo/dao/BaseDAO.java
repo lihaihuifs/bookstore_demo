@@ -33,11 +33,14 @@ public class BaseDAO {
             return queryRunner.update(connection, sql, args);
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
+            throw new RuntimeException(e);
+        } /*
+        finally {
             // Close connection
             JdbcUtils.closeConnection(connection);
         }
         return -1;
+        */
     }
 
     // Fetch one record
@@ -47,10 +50,12 @@ public class BaseDAO {
             return queryRunner.query(connection,sql,new BeanHandler<T>(type),args);
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            JdbcUtils.closeConnection(connection);
+            throw new RuntimeException(e);
         }
-        return null;
+//        finally {
+//            JdbcUtils.closeConnection(connection);
+//        }
+//        return null;
     }
 
     // Fetch multiple records
@@ -60,10 +65,12 @@ public class BaseDAO {
             return queryRunner.query(connection,sql,new BeanListHandler<T>(type),args);
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            JdbcUtils.closeConnection(connection);
+            throw new RuntimeException(e);
         }
-        return null;
+//        finally {
+//            JdbcUtils.closeConnection(connection);
+//        }
+//        return null;
     }
 
     public Object queryForSingleValue(String sql, Object...args){
@@ -72,9 +79,11 @@ public class BaseDAO {
             return queryRunner.query(connection,sql,new ScalarHandler(),args);
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            JdbcUtils.closeConnection(connection);
+            throw new RuntimeException(e);
         }
-        return null;
+//        finally {
+//            JdbcUtils.closeConnection(connection);
+//        }
+//        return null;
     }
 }
