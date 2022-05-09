@@ -75,6 +75,15 @@
         <url-pattern>/orderServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>CartServlet</servlet-name>
+        <servlet-class>com.haihui.book.bookstore_demo.web.CartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/cartServlet</url-pattern>
+    </servlet-mapping>
+
     <filter>
         <filter-name>ManagerFilter</filter-name>
         <filter-class>com.haihui.book.bookstore_demo.filter.ManagerFilter</filter-class>
@@ -92,8 +101,15 @@
     </filter>
     <filter-mapping>
         <filter-name>TransactionFilter</filter-name>
-        <!-- /* 表示当前工程下所有请求 -->
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+    <error-page>
+        <error-code>500</error-code>
+        <location>/pages/error/500.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/pages/error/404.jsp</location>
+    </error-page>
 </web-app>

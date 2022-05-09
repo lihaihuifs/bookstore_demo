@@ -15,7 +15,9 @@ import com.haihui.book.bookstore_demo.entity.OrderItem;
 import org.junit.Test;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @description  :
@@ -37,6 +39,13 @@ public class OrderDAOTest {
                 BigDecimal(100),new BigDecimal(200),"1234567890"));
         orderItemDAO.saveOrderItem(new OrderItem(null,"Netty 入门", 1,new BigDecimal(100),new
                 BigDecimal(100),"1234567890"));
+    }
+
+    @Test
+    public void getOrderByUserIdTest(){
+        OrderDAO orderDao = new OrderDAOImpl();
+        List<Order> orders = orderDao.getOrderByUserId(1);
+        System.out.println(Arrays.toString(orders.toArray()));
     }
 }
 

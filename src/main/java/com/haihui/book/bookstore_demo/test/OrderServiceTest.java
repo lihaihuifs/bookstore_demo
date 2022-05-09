@@ -28,4 +28,8 @@ public class OrderServiceTest {
         OrderService orderService = new OrderServiceImpl();
         System.out.println("订单号是：" + orderService.createOrder(cart, 1));
     }
+    @Test
+    public void showOrderTest(){
+        OrderService orderService = new OrderServiceImpl();
+    }
 }

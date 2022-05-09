@@ -138,11 +138,11 @@
 										   autocomplete="off" tabindex="1" name="email" id="email" />
 									<br />
 									<br />
-									<label>验证码：</label>
-									<input class="itxt" type="text" style="width: 150px;" name="code" id="code"/>
-									<img id="code_img" alt="code" src="kaptcha.jpg" style="float: right; margin-right: 40px">
-									<br />
-									<br />
+									<div id="verification_div">
+										<label>验证码：</label>
+										<input class="itxt" type="text" style="width: 100px;" name="code" id="code"/><img id="code_img" alt="code" src="kaptcha.jpg" style="float: right; width: 150px; margin-right: 0px">
+									</div>
+<%--									<br />--%>
 									<input type="submit" value="注册" id="sub_btn" />
 								</form>
 							</div>

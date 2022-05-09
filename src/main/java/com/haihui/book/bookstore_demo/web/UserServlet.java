@@ -75,7 +75,7 @@ public class UserServlet extends BaseServlet {
         req.getRequestDispatcher("/pages/user/regist_success.jsp").forward(req,resp);
     }
 
-    public void logOut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    public void logout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         req.getSession().invalidate(); // Destroy session
         resp.sendRedirect(req.getContextPath()); // Back to index.jsp
     }

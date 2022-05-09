@@ -64,7 +64,7 @@ public class BookServlet extends BaseServlet {
         Integer id = WebUtils.parseInt(req.getParameter("id"), 0);
         Book book = bookService.queryBookById(id);
         req.setAttribute("book", book);
-        req.getRequestDispatcher("/manager/book_edit.jsp").forward(req, resp);
+        req.getRequestDispatcher("/pages/manager/book_edit.jsp").forward(req, resp);
     }
 
     public void page(HttpServletRequest req, HttpServletResponse resp)

@@ -15,6 +15,7 @@ import com.haihui.book.bookstore_demo.entity.*;
 import com.haihui.book.bookstore_demo.service.OrderService;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -52,5 +53,11 @@ public class OrderServiceImpl implements OrderService {
         // Clear cart
         cart.clear();
         return orderId;
+    }
+
+    @Override
+    public List<Order> getOrderByUserId(Integer userId) {
+        List<Order> orders = orderDao.getOrderByUserId(userId);
+        return orders;
     }
 }

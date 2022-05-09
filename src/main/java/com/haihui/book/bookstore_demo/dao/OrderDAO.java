@@ -3,6 +3,8 @@ package com.haihui.book.bookstore_demo.dao;
 import com.haihui.book.bookstore_demo.entity.Order;
 import com.haihui.book.bookstore_demo.entity.OrderItem;
 
+import java.util.List;
+
 /**
  * @author : lihai
  * @version : 1.0
@@ -17,4 +19,5 @@ public interface OrderDAO {
      * @return
      */
     int saveOrder(Order order);
+    List<Order> getOrderByUserId(Integer userId);
 }

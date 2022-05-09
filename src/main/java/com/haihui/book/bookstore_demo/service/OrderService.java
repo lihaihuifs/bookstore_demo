@@ -1,6 +1,9 @@
 package com.haihui.book.bookstore_demo.service;
 
 import com.haihui.book.bookstore_demo.entity.Cart;
+import com.haihui.book.bookstore_demo.entity.Order;
+
+import java.util.List;
 
 /**
  * @author : lihai
@@ -10,4 +13,5 @@ import com.haihui.book.bookstore_demo.entity.Cart;
  **/
 public interface OrderService {
     String createOrder(Cart cart, Integer userId);
+    List<Order> getOrderByUserId(Integer userId);
 }
