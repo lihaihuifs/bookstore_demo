@@ -124,7 +124,7 @@ div{
 
 .login_banner{
 	height:475px;
-	background-color: #39987c;
+	background-color: limegreen;
 }
 
 .login_form{
@@ -187,7 +187,7 @@ h1 {
 }
 
 #sub_btn{
-	background-color: #39987c;
+	background-color: limegreen;
 	border: none;
 	color: #fff;
 	width: 360px;

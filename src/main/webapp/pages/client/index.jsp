@@ -1,10 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>书城首页</title>
+    <title>Home</title>
     <%@include file="/pages/common/head_settings.jsp" %>
     <link type="text/css" rel="stylesheet" href="static/css/style.css">
     <script type="text/javascript">
@@ -19,36 +19,36 @@
 <body>
 
 <div id="header">
-    <img class="logo_img" alt="" src="static/img/logo.gif">
-    <span class="wel_word">网上书城</span>
+    <img class="logo_img" alt="bookstore logo" src="static/img/bookstore.jpg">
+    <span class="wel_word" style="margin:0 auto; text-align: center;">Book Store</span>
     <div>
         <c:if test="${empty sessionScope.user}">
-            <a href="pages/user/login.jsp">登录</a>
-            <a href="pages/user/regist.jsp">注册</a>
+            <a href="pages/user/login.jsp">Login | </a>
+            <a href="pages/user/regist.jsp">Register | </a>
         </c:if>
         <c:if test="${not empty sessionScope.user}">
-            <span>欢迎<span class="um_span">${sessionScope.user.username}</span>光临尚硅谷书城</span>
-            <a href="userServlet?action=logout">注销</a>
+            <span>Welcome, <span class="um_span">${sessionScope.user.username}</span>|</span>
+            <a href="userServlet?action=logout">Logout | </a>
         </c:if>
-        <a href="pages/cart/cart.jsp">购物车</a>
-        <a href="pages/manager/manager.jsp">后台管理</a>
+        <a href="pages/cart/cart.jsp">Cart | </a>
+        <a href="pages/manager/manager.jsp">Management</a>
     </div>
 </div>
 <div id="main">
     <div id="book">
         <div class="book_cond">
             <form action="client/bookServlet?action=pageByPrice&pageNo=${requestScope.page.pageNo}" method="post">
-                价格：<input id="min" type="text" name="min" value=""> 元 -
-                <input id="max" type="text" name="max" value=""> 元
-                <input type="submit" value="查询"/>
+                Price： <input id="min" type="text" name="min" value=""> $ -
+                <input id="max" type="text" name="max" value=""> $
+                <input type="submit" style="width: auto" value="Search"/>
             </form>
         </div>
 
         <div style="text-align: center">
-            <span>您的购物车中有${not empty sessionScope.cart.items ? sessionScope.cart.totalCount : 0}件商品</span>
+            <span>Cart has: ${not empty sessionScope.cart.items ? sessionScope.cart.totalCount : 0} item(s)</span>
             <c:if test="${not empty sessionScope.cart.items}">
                 <div>
-                    您刚刚将<span style="color: red">${sessionScope.lastAddedItem}</span>加入到了购物车中
+                    Add <span style="color: red">${sessionScope.lastAddedItem}</span> to Cart
                 </div>
             </c:if>
         </div>
@@ -56,31 +56,32 @@
         <c:forEach items="${requestScope.page.items}" var="book">
             <div class="b_list">
                 <div class="img_div">
-                    <img class="book_img" alt="" src="${book.imgPath}"/>
+<%--                    <img class="book_img" alt="" src="${book.imgPath}"/>--%>
+                    <img class="book_img" alt="" src="static/img/hp.jpg"/>
                 </div>
                 <div class="book_info">
                     <div class="book_name">
-                        <span class="sp1">书名:</span>
+                        <span class="sp1">Book:</span>
                         <span class="sp2">${book.name}</span>
                     </div>
                     <div class="book_author">
-                        <span class="sp1">作者:</span>
+                        <span class="sp1">Author:</span>
                         <span class="sp2">${book.author}</span>
                     </div>
                     <div class="book_price">
-                        <span class="sp1">价格:</span>
-                        <span class="sp2">￥${book.price}</span>
+                        <span class="sp1">Price:</span>
+                        <span class="sp2">$${book.price}</span>
                     </div>
                     <div class="book_sales">
-                        <span class="sp1">销量:</span>
+                        <span class="sp1">Sales:</span>
                         <span class="sp2">${book.sales}</span>
                     </div>
                     <div class="book_amount">
-                        <span class="sp1">库存:</span>
+                        <span class="sp1">Stock:</span>
                         <span class="sp2">${book.stock}</span>
                     </div>
                     <div class="book_add">
-                        <button class="add_to_cart" bookId="${book.id}">加入购物车</button>
+                        <button class="add_to_cart" bookId="${book.id}">Add to cart</button>
                     </div>
                 </div>
             </div>
@@ -89,10 +90,9 @@
     </div>
 
     <div id="page_nav">
-        <%--大于首页，才显示首页上一页--%>
         <c:if test="${requestScope.page.pageNo > 1}">
-            <a href="${requestScope.page.url}&pageNo=1">首页</a>
-            <a href="${requestScope.page.url}&pageNo=${requestScope.page.pageNo - 1}">上一页</a>
+            <a href="${requestScope.page.url}&pageNo=1">Home</a>
+            <a href="${requestScope.page.url}&pageNo=${requestScope.page.pageNo - 1}">Last</a>
         </c:if>
 
         <c:choose>
@@ -127,14 +127,13 @@
             </c:if>
         </c:forEach>
 
-        <%-- 如果已经 是最后一页，则不显示下一页，末页 --%>
         <c:if test="${requestScope.page.pageNo < requestScope.page.pageTotal}">
-            <a href="${requestScope.page.url}&pageNo=${requestScope.page.pageNo+1}">下一页</a>
-            <a href="${requestScope.page.url}&pageNo=${requestScope.page.pageTotal}">末页</a>
+            <a href="${requestScope.page.url}&pageNo=${requestScope.page.pageNo+1}">Next</a>
+            <a href="${requestScope.page.url}&pageNo=${requestScope.page.pageTotal}">End</a>
         </c:if>
-        共${requestScope.page.pageTotal}页，${requestScope.page.pageTotalCount}条记录
-        到第<input value="${param.pageNo}" name="pn" id="pn_input"/>页
-        <input id="searchPageBtn" type="button" value="确定">
+         ,Total ${requestScope.page.pageTotal} pages, ${requestScope.page.pageTotalCount} records
+        to <input value="${param.pageNo}" name="pn" id="pn_input"/> page
+        <input id="searchPageBtn" type="button" value="go">
     </div>
 </div>
 

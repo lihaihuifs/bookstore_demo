@@ -19,7 +19,7 @@ public class Book {
     private BigDecimal price;
     private Integer sales;
     private Integer stock;
-    private String imgPath = "static/img/default.jpg";
+    private String imgPath = "static/img/hp.jpg"; // "static/img/default.jpg";  //
 
     public Book(Integer id, String name, String author, BigDecimal price, Integer sales, Integer stock, String imgPath) {
         this.id = id;

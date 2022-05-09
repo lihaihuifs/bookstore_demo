@@ -1,9 +1,9 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>后台管理</title>
+    <title>Management System</title>
     <%@include file="/pages/common/head_settings.jsp" %>
     <style type="text/css">
         h1 {
@@ -15,13 +15,13 @@
 <body>
 
 <div id="header">
-    <img class="logo_img" alt="" src="static/img/logo.gif">
-    <span class="wel_word">后台管理系统</span>
+    <img class="logo_img" alt="" src="static/img/bookstore.jpg">
+    <span class="wel_word">Management System</span>
     <%@include file="/pages/common/manager_menu.jsp"%>
 </div>
 
 <div id="main">
-    <h1>欢迎管理员进入后台管理系统</h1>
+    <h1>Welcome to Book Store Management System</h1>
 </div>
 
 <%@include file="/pages/common/footer.jsp" %>
